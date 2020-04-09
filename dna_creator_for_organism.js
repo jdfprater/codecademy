@@ -75,10 +75,36 @@ function pAequorFactory(numberOrg, arrayBases) {
       } else {
         return false;
       }
+    },
+
+    // create another strand with complementary bases
+    complementStrand() {
+      let complement =[];
+      for (let i = 0; i < this.dna.length; i++) {
+        switch (this.dna[i]) {
+          case 'A': 
+            complement.push('T');
+            break;
+          case 'T': 
+            complement.push('A');
+            break;
+          case 'C': 
+            complement.push('G');
+            break;
+          case 'G':
+            complement.push('C');
+            break;
+        }
+      }
+      return complement;
     }
 
   }
 }
+
+const ex = pAequorFactory(1, mockUpStrand());
+console.log(ex.dna);
+console.log(ex.complementStrand());
 
 let survivingInstances = []; // empty array to store pAequor
 function create30() {
